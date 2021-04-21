@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-docker-test
+  name: python-todo
   namespace: default
 spec:
   replicas: 1
@@ -20,13 +20,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-docker-test-1
+  name: python-todo
   namespace: default
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 5000
+    targetPort: 5000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -42,6 +42,6 @@ spec:
         pathType: Prefix  
         backend:
           service:
-            name: python-docker-test-1
+            name: python-todo
             port:
               number: 8080
