@@ -41,7 +41,7 @@ def index():
             db.session.commit()
             return redirect('/')
         except:
-            print(db)
+            print(db.session,"this is the db session")
             return 'There was an issue adding your task'
 
     else:
